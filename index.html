@@ -19,8 +19,10 @@
   <link rel="stylesheet" href="assets/css/core.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/home.css">
+  <script src="assets/js/lenis.min.js"></script>
 </head>
 <body>
+  <div class="grain-overlay" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- Header -->
@@ -43,6 +45,7 @@
       <nav class="nav" aria-label="Primary Navigation">
         <a href="#programs">Programs</a>
         <a href="#approach">Philosophy</a>
+        <a href="#atelier">Atelier</a>
         <a href="#credentials">Credential Verification</a>
         <a href="#faq">FAQ</a>
         <a href="#contact" data-contact-link hidden>Contact</a>
@@ -95,10 +98,10 @@
           </div>
         </div>
 
-        <!-- High-Fashion Emblem Card Showcase with Editorial Atelier Image -->
+        <!-- High-Fashion Editorial Model Showcase with Refined Atelier Seal -->
         <div class="hero__art" aria-hidden="true">
           <div class="hero__art-card">
-            <img class="hero__photo" src="assets/img/hero-atelier.jpg" alt="Aurelle Academy Atelier" width="450" height="450">
+            <img class="hero__photo" src="assets/img/editorial-lash-model.jpg" alt="Aurelle Academy Haute Couture Lash Model" width="600" height="750">
             <div class="hero__emblem-badge">
               <svg class="hero__emblem-lg" viewBox="0 0 100 100" fill="none">
                 <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-opacity="0.3" stroke-width="1.2" stroke-dasharray="2 3"/>
@@ -108,8 +111,10 @@
                 <path d="M33 55 Q50 64 67 55" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
                 <circle cx="50" cy="42" r="3.2" fill="currentColor"/>
               </svg>
-              <span class="hero__brand-callout">Aurelle</span>
-              <span class="hero__sub-callout">Academy Atelier</span>
+              <div class="hero__badge-text">
+                <span class="hero__brand-callout">Aurelle</span>
+                <span class="hero__sub-callout">Haute Couture Atelier</span>
+              </div>
             </div>
           </div>
         </div>
@@ -125,6 +130,36 @@
           <p class="section__lead">
             Every curriculum balances clinical safety with advanced aesthetic design. Each course concludes with an authentic, cryptographically registered certificate.
           </p>
+        </div>
+
+        <!-- Signature Discipline Editorial Feature -->
+        <div class="signature-editorial" data-reveal>
+          <div class="signature-editorial__visual">
+            <img class="signature-editorial__photo" src="assets/img/artisan-hands-craft.jpg" alt="Master Lash Artistry and Precision Tweezers Application" loading="lazy" width="800" height="600">
+            <span class="signature-editorial__pill">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="12 6 15.5 12 8.5 12"/></svg>
+              The Sovereign Discipline
+            </span>
+          </div>
+          <div class="signature-editorial__content">
+            <span class="signature-editorial__eyebrow">Haute Couture Artistry</span>
+            <h3 class="signature-editorial__title">Couture Lash Architecture &amp; Fan Geometry</h3>
+            <p class="signature-editorial__lead">
+              Mastery of cluster, temporary, express, and multi-dimensional volume fans. We teach custom mapping tailored to cranial bone structure, medical adhesive chemistry, and uncompromising natural lash preservation.
+            </p>
+            <div class="signature-editorial__tags">
+              <span class="signature-editorial__tag">Golden Ratio Eye Mapping</span>
+              <span class="signature-editorial__tag">0.5mm Safety Clearance</span>
+              <span class="signature-editorial__tag">Fume-Free Bio Adhesives</span>
+              <span class="signature-editorial__tag">Non-Traumatic Removal</span>
+            </div>
+            <a class="btn btn--gold" href="#credentials">
+              View Certified Competency
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </a>
+          </div>
         </div>
 
         <div class="grid grid--programs">
@@ -309,6 +344,46 @@
       </div>
     </section>
 
+    <!-- Inside The Atelier: The Backstage Masterclass -->
+    <section id="atelier" class="section section--atelier" aria-labelledby="atelier-title">
+      <div class="container">
+        <div class="section__header">
+          <span class="eyebrow">Living Atelier Culture</span>
+          <h2 id="atelier-title" class="section__title">Inside The Aurelle Atelier</h2>
+          <p class="section__lead">
+            Haussmannian daylight, private cohorts, and deliberate repetition under intimate master mentorship.
+          </p>
+        </div>
+
+        <div class="atelier-showcase" data-reveal>
+          <img class="atelier-showcase__image" src="assets/img/masterclass-atelier-live.jpg" alt="Aurelle Academy Parisian Masterclass Session" loading="lazy" width="1600" height="900">
+          <div class="atelier-showcase__overlay">
+            <blockquote class="atelier-showcase__quote">
+              &ldquo;We do not train salon technicians. We cultivate artisans who understand facial anatomy as living, sculpted architecture.&rdquo;
+            </blockquote>
+            <div class="atelier-stats">
+              <div class="atelier-stat">
+                <span class="atelier-stat__number">1 : 4</span>
+                <span class="atelier-stat__label">Master Mentorship Ratio</span>
+              </div>
+              <div class="atelier-stat">
+                <span class="atelier-stat__number">80%</span>
+                <span class="atelier-stat__label">Hands-On Clinical Hours</span>
+              </div>
+              <div class="atelier-stat">
+                <span class="atelier-stat__number">100%</span>
+                <span class="atelier-stat__label">Cryptographic Verification</span>
+              </div>
+              <div class="atelier-stat">
+                <span class="atelier-stat__number">A4 Silk</span>
+                <span class="atelier-stat__label">Foil Stamped Credential</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Credential Verification Section (With Realistic Silk Certificate Mockup) -->
     <section id="credentials" class="section" aria-labelledby="credentials-title">
       <div class="container">
@@ -349,9 +424,10 @@
             </div>
           </div>
 
-          <!-- Realistic Silk Ivory Certificate Mockup -->
+          <!-- Realistic Silk Ivory Certificate Mockup with 3D Parallax & Specular Glare -->
           <div class="cert-mockup-wrap" data-reveal>
             <div class="cert-mockup">
+              <div class="cert-mockup__shimmer" aria-hidden="true"></div>
               <!-- Corner Ribbon Waves -->
               <svg class="cert-mockup__corner-wave" viewBox="0 0 140 100" fill="none" aria-hidden="true">
                 <path d="M0 0 L140 0 C100 40, 50 60, 0 100 Z" fill="#eee7d5" opacity="0.7"/>
