@@ -1,2 +1,8 @@
+# local-only files (never published)
 PROJECT_STATE.md
+tools/registry.private.csv
+docs/
+reference/
 .vscode/
+__pycache__/
+*.pyc

@@ -1,0 +1,201 @@
+/* components.css - shared components: header, buttons, cards, footer, wordmark. */
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: oklch(0.13 0.008 85 / 0.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.site-header__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.25rem;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+}
+
+.wordmark__mark {
+  width: 2.1rem;
+  height: 2.1rem;
+  color: var(--gold);
+  flex: none;
+}
+
+.wordmark__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.wordmark__name {
+  font-family: var(--font-script);
+  font-size: 1.7rem;
+  color: var(--gold-strong);
+}
+
+.wordmark__sub {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.9rem, 2.5vw, 2rem);
+}
+
+.nav a {
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.2s var(--ease);
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: var(--gold-strong);
+}
+
+@media (max-width: 40rem) {
+  .nav a:not(.btn) {
+    display: none;
+  }
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.5rem;
+  min-height: 2.75rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.btn svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.btn--gold {
+  background: linear-gradient(135deg, var(--gold-strong), var(--gold-deep));
+  color: var(--on-gold);
+}
+
+.btn--gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px var(--gold-glow);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.btn--ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold-strong);
+}
+
+.btn--sm {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.78rem;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  position: relative;
+  background: linear-gradient(180deg, var(--bg-2), var(--bg-1));
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  padding: clamp(1.4rem, 3vw, 2rem);
+  box-shadow: var(--shadow-card);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  border-radius: var(--radius-l) var(--radius-l) 0 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.8;
+}
+
+/* ---------- Typography helpers ---------- */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  color: var(--gold-strong);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--line-soft);
+  padding-block: 2.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.site-footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-footer a {
+  text-decoration-color: var(--line);
+  text-underline-offset: 4px;
+}
+
+.site-footer a:hover {
+  color: var(--gold-strong);
+}
+
+.disclaimer {
+  margin-top: 1.25rem;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 62ch;
+}

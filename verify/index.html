@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Certificate Verification | Aurelle Academy</title>
+  <meta name="description" content="Verify an Aurelle Academy certificate by entering the ID printed below the QR code.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#161412">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/montserrat-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/core.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/verify.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__row">
+      <a class="wordmark" href="../" aria-label="Aurelle Academy home">
+        <svg class="wordmark__mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" stroke-dasharray="2 3"/>
+          <circle cx="50" cy="50" r="41" stroke="currentColor" stroke-width="2.2"/>
+          <path d="M50 18 C43 32, 28 58, 25 76" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/>
+          <path d="M50 18 C57 32, 72 58, 75 76" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/>
+          <path d="M33 55 Q50 64 67 55" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+          <circle cx="50" cy="42" r="3.2" fill="currentColor"/>
+        </svg>
+        <span class="wordmark__text">
+          <span class="wordmark__name">Aurelle</span>
+          <span class="wordmark__sub">Academy</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../">Home</a>
+        <a href="./" aria-current="page">Verify</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="verify">
+    <div class="container verify__wrap">
+      <span class="eyebrow">Certificate verification</span>
+      <h1 class="verify__title">Verify a <span class="script">certificate</span></h1>
+      <p class="verify__lead">Enter the ID printed below the QR code on the certificate.</p>
+
+      <form id="verify-form" class="card verify__form" novalidate>
+        <label for="cert-id" class="verify__label">Certificate ID</label>
+        <div class="verify__row">
+          <input
+            id="cert-id"
+            class="verify__input"
+            type="text"
+            inputmode="text"
+            autocomplete="off"
+            autocapitalize="characters"
+            spellcheck="false"
+            maxlength="20"
+            placeholder="AUR-XXXX-XXXX"
+            aria-describedby="cert-hint cert-status"
+            required
+          >
+          <button id="verify-btn" class="btn btn--gold" type="submit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            Verify
+          </button>
+        </div>
+        <p id="cert-hint" class="verify__hint">Letters and numbers only. Dashes are optional.</p>
+        <p id="cert-status" class="visually-hidden" role="status" aria-live="polite"></p>
+      </form>
+
+      <section id="result" class="result" aria-live="polite" hidden></section>
+
+      <p class="disclaimer">
+        Aurelle Academy is a private training academy. This page confirms that a certificate was issued by the academy
+        to its own graduate. It is not a government or licensing-body registry.
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__row">
+      <p>&copy; 2026 Aurelle Academy</p>
+      <a href="../">Back to home</a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/verify.js" defer></script>
+</body>
+</html>
