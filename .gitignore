@@ -1,5 +1,6 @@
 # local-only files (never published)
 PROJECT_STATE.md
+AURELLE_MASTER_PLAN.md
 tools/registry.private.csv
 docs/
 reference/
