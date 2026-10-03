@@ -1,0 +1,38 @@
+{
+  "GL-101": {
+    "id": "GL-101",
+    "student_name": "Zeinab Shirini",
+    "course_title": "Cluster & Temporary Lash Application Training Course",
+    "issue_date": "October 2026",
+    "status": "Verified & Active",
+    "accredited_center": "Gloria Beauty Academy",
+    "trainer": "Certified International Master Trainer",
+    "verification_level": "Professional Certification (Level II)",
+    "country": "Canada",
+    "board": "Canadian Aesthetic Board (CAB)"
+  },
+  "GL-102": {
+    "id": "GL-102",
+    "student_name": "Aysel Hafezi",
+    "course_title": "Cluster & Temporary Lash Application Training Course",
+    "issue_date": "October 2026",
+    "status": "Verified & Active",
+    "accredited_center": "Gloria Beauty Academy",
+    "trainer": "Certified International Master Trainer",
+    "verification_level": "Professional Certification (Level II)",
+    "country": "Canada",
+    "board": "Canadian Aesthetic Board (CAB)"
+  },
+  "GL-100": {
+    "id": "GL-100",
+    "student_name": "Leila Khosrow",
+    "course_title": "Micropigmentation & Microblading Training Course",
+    "issue_date": "February 2026",
+    "status": "Verified & Active",
+    "accredited_center": "Gloria Beauty Academy",
+    "trainer": "Certified International Master Trainer",
+    "verification_level": "Advanced Practitioner Certification",
+    "country": "Canada",
+    "board": "Canadian Aesthetic Board (CAB)"
+  }
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificate Verification Portal | Canadian Aesthetic Board (CAB)</title>
+  <meta name="description" content="Official international credential and certificate authentication registry for Canadian Aesthetic Board accredited professionals.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div class="site-container">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="official-badge-row">
+        <svg class="maple-leaf-icon" viewBox="0 0 512 512" aria-hidden="true">
+          <path d="M256 0c7.8 0 15 4.6 18.2 11.8l38.2 86.8 54.4-18.1c8.1-2.7 17.1 .2 22.1 7.2s5.1 16.4 .3 23.6l-50.5 75.7 65.5-3.3c8.5-.4 16.5 4.8 19.3 12.8s.5 17-5.8 22.8l-87.8 80.5 56.4 37.6c7.4 4.9 10.9 13.9 8.7 22.5s-9.3 14.5-18.1 14.5l-63.5 0 25.1 87.8c2.4 8.4-1.2 17.4-8.8 22.1s-17.3 3.7-23.8-2.4l-49.8-46.7 0 78.8c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-78.8-49.8 46.7c-6.5 6.1-16.2 7.1-23.8 2.4s-11.2-13.7-8.8-22.1l25.1-87.8-63.5 0c-8.8 0-15.9-5.9-18.1-14.5s1.3-17.6 8.7-22.5l56.4-37.6-87.8-80.5c-6.3-5.8-8.6-14.8-5.8-22.8s10.8-13.2 19.3-12.8l65.5 3.3-50.5-75.7c-4.8-7.2-4.7-16.6 .3-23.6s14-9.9 22.1-7.2l54.4 18.1 38.2-86.8c3.2-7.2 10.4-11.8 18.2-11.8z"/>
+        </svg>
+        <span>Official Registry &bull; Ontario, Canada</span>
+      </div>
+      <h1 class="board-title">Canadian Aesthetic Board</h1>
+      <p class="board-subtitle">International Credential Authentication &amp; Certification Registry</p>
+    </header>
+
+    <!-- Search Section -->
+    <main>
+      <section class="search-card" aria-label="Certificate Verification Form">
+        <label for="certIdInput" class="search-label">Verify Credential Authenticity</label>
+        <div class="search-input-group">
+          <input 
+            type="text" 
+            id="certIdInput" 
+            class="search-input" 
+            placeholder="Enter Certificate ID (e.g. GL-101)" 
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <button type="button" id="verifyBtn" class="btn-verify">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            Verify
+          </button>
+        </div>
+        <p class="search-hint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          Enter the official ID printed beneath the QR code on your certificate.
+        </p>
+
+        <!-- Error Message -->
+        <div id="errorContainer" class="error-card" role="alert"></div>
+      </section>
+
+      <!-- Verified Result Display -->
+      <section id="resultContainer" class="result-container" aria-live="polite">
+        <div class="verified-card">
+          
+          <div class="status-header">
+            <div class="status-pill">
+              <span class="pulse-dot"></span>
+              <span id="resStatus">Verified &amp; Active</span>
+            </div>
+            <div class="cert-id-badge">
+              ID: <span id="resCertId">GL-101</span>
+            </div>
+          </div>
+
+          <div class="student-presentation">
+            <p class="cert-for-label">Certified Professional</p>
+            <h2 id="resStudentName" class="student-name">Zeinab Shirini</h2>
+            <p id="resCourseTitle" class="course-title">Cluster &amp; Temporary Lash Application Training Course</p>
+          </div>
+
+          <div class="details-grid">
+            <div class="detail-item">
+              <span class="detail-label">Accredited Center</span>
+              <span id="resCenter" class="detail-value">Gloria Beauty Academy</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Trainer Status</span>
+              <span id="resTrainer" class="detail-value">Certified International Master Trainer</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Issue Date</span>
+              <span id="resIssueDate" class="detail-value">October 2026</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Qualification Level</span>
+              <span id="resLevel" class="detail-value">Professional Certification</span>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <button type="button" id="shareBtn" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copy Verification Link
+            </button>
+            <button type="button" id="printBtn" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              Print / Save Record
+            </button>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>&copy; 2026 Canadian Aesthetic Board (CAB). All rights reserved.</p>
+      <div class="footer-links">
+        <span>Ontario Professional Standards</span>
+        <span>Aesthetic Credential Registry</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="assets/js/verify.js"></script>
+</body>
+</html>
