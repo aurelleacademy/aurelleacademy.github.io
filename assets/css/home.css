@@ -941,3 +941,81 @@
     min-height: 440px;
   }
 }
+
+/* ---------- 4-Stage Qualification Standard Grid ---------- */
+.qualification-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
+  gap: 1.65rem;
+}
+
+.qual-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  padding: 2.25rem 2rem;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.28s var(--ease), border-color 0.28s var(--ease);
+}
+
+.qual-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+
+.qual-card__badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--gold-strong);
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+
+.qual-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.85rem;
+  line-height: 1.2;
+}
+
+.qual-card__desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.qual-card__metric {
+  margin-top: 1.5rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--font-ui);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.qual-card__metric span {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-strong);
+}
+

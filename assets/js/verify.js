@@ -101,26 +101,96 @@
   }
 
   function renderFound(id, record) {
-    const card = el("article", "card");
-    const status = el("span", "result__status result__status--ok");
-    status.append(svgIcon("ok"), document.createTextNode(record.status || "Valid"));
+    const card = el("article", "card result__cert-card");
 
-    const name = el("p", "result__name");
+    // 1. Header with Golden Crest Emblem & Formal Institution Title
+    const header = el("div", "result__cert-header");
+    const crestWrap = el("div", "result__crest-wrap");
+    crestWrap.innerHTML = `
+      <svg class="result__crest-svg" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" stroke-dasharray="2 3"/>
+        <circle cx="50" cy="50" r="41" stroke="currentColor" stroke-width="2.2"/>
+        <path d="M50 18 C43 32, 28 58, 25 76" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/>
+        <path d="M50 18 C57 32, 72 58, 75 76" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/>
+        <path d="M33 55 Q50 64 67 55" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+        <circle cx="50" cy="42" r="3.2" fill="currentColor"/>
+      </svg>
+    `;
+    const instTitle = el("div", "result__inst-meta");
+    instTitle.innerHTML = `
+      <span class="result__inst-name">Aurelle Academy</span>
+      <span class="result__inst-sub">European Private Vocational Registry &bull; Assessment Board</span>
+    `;
+    header.append(crestWrap, instTitle);
+
+    // 2. Cryptographic Validation Badge
+    const statusWrap = el("div", "result__status-bar");
+    const status = el("span", "result__status result__status--ok");
+    status.append(svgIcon("ok"), document.createTextNode(record.status ? "AUTHENTIC & VERIFIED (" + record.status.toUpperCase() + ")" : "AUTHENTIC & CRYPTOGRAPHICALLY VERIFIED"));
+    statusWrap.append(status);
+
+    // 3. Candidate & Qualification Section
+    const candidateSection = el("div", "result__candidate-section");
+    const certEyebrow = el("span", "result__eyebrow", "CERTIFIED GRADUATE HOLDER");
+    const name = el("h2", "result__name");
     const bdi = document.createElement("bdi");
     bdi.textContent = record.name;
     name.append(bdi);
 
+    const courseWrap = el("div", "result__course-wrap");
+    const courseEyebrow = el("span", "result__course-label", "ACCREDITED VOCATIONAL DISCIPLINE");
+    const course = el("p", "result__course", record.course);
+    courseWrap.append(courseEyebrow, course);
+
+    candidateSection.append(certEyebrow, name, courseWrap);
+
+    // 4. Institutional Security Grid (6 Key Metadata Fields)
     const grid = el("div", "result__grid");
     grid.append(
-      field("Certificate ID", id),
-      field("Issued", record.date),
-      field("Issued by", "Aurelle Academy")
+      field("Credential Identifier", id),
+      field("Date of Examination", record.date),
+      field("Qualification Standard", "Private Vocational Framework (Level IV)"),
+      field("Clinical Lab Modules", "Standard Supervised Clinical CEUs"),
+      field("Ledger Security Protocol", "PBKDF2-200K / AES-256-GCM Verified"),
+      field("Issuing Authority", "Aurelle Academy Assessment Jury")
     );
 
-    card.append(status, name, el("p", "result__course", record.course), grid);
+    // 5. Official Signature & Stamp Seals (Printable)
+    const footerMeta = el("div", "result__signatures");
+    footerMeta.innerHTML = `
+      <div class="result__signature-col">
+        <span class="result__sig-script">H. V. Laurent</span>
+        <span class="result__sig-title">Director of Academic Studies</span>
+      </div>
+      <div class="result__seal-col">
+        <div class="result__stamp-seal">
+          <span>AUTHENTIC</span>
+          <span>LEDGER VERIFIED</span>
+          <span>2026</span>
+        </div>
+      </div>
+      <div class="result__signature-col">
+        <span class="result__sig-script">M. S. D'Aurelle</span>
+        <span class="result__sig-title">Assessment Jury Chairperson</span>
+      </div>
+    `;
+
+    // 6. Action Toolbar (Print / PDF)
+    const actions = el("div", "result__actions");
+    const printBtn = el("button", "btn btn--gold result__print-btn");
+    printBtn.type = "button";
+    printBtn.innerHTML = `
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print Official Statement / Save PDF
+    `;
+    printBtn.addEventListener("click", () => window.print());
+
+    actions.append(printBtn);
+
+    card.append(header, statusWrap, candidateSection, grid, footerMeta, actions);
     result.replaceChildren(card);
     result.hidden = false;
-    statusLive.textContent = "Certificate verified.";
+    statusLive.textContent = "Certificate verified authentic and registered.";
   }
 
   function renderMessage(message, label) {
