@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
   <!-- Outer subtle luxury ring -->
-  <circle cx="50" cy="50" r="46" stroke="oklch(0.82 0.13 85 / 0.35)" stroke-width="1.2" stroke-dasharray="2 3"/>
+  <circle cx="50" cy="50" r="46" stroke="#dfbb5a" stroke-opacity="0.35" stroke-width="1.2" stroke-dasharray="2 3"/>
   <circle cx="50" cy="50" r="41" stroke="url(#goldGrad)" stroke-width="1.8"/>
   
   <!-- Stylized Monogram A with Ethereal Lash/Arch Curves -->
@@ -15,13 +15,13 @@
   <circle cx="50" cy="42" r="2.8" fill="url(#goldGrad)"/>
   
   <!-- Subtle top crest point -->
-  <circle cx="50" cy="18" r="1.5" fill="oklch(0.96 0.008 85)"/>
+  <circle cx="50" cy="18" r="1.5" fill="#fffbf0"/>
 
   <defs>
     <linearGradient id="goldGrad" x1="20" y1="15" x2="80" y2="85" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="oklch(0.92 0.14 88)"/>
-      <stop offset="50%" stop-color="oklch(0.82 0.13 85)"/>
-      <stop offset="100%" stop-color="oklch(0.68 0.12 78)"/>
+      <stop offset="0%" stop-color="#fff4d0"/>
+      <stop offset="50%" stop-color="#dfbb5a"/>
+      <stop offset="100%" stop-color="#b1882d"/>
     </linearGradient>
   </defs>
 </svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 75" fill="none">
+  <defs>
+    <linearGradient id="gTextGold" x1="10" y1="10" x2="180" y2="65" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fff4d0"/>
+      <stop offset="50%" stop-color="#dfbb5a"/>
+      <stop offset="100%" stop-color="#b1882d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Script wordmark Aurelle -->
+  <text x="5" y="45" font-family="'Great Vibes', cursive, 'Snell Roundhand'" font-size="46" fill="url(#gTextGold)">Aurelle</text>
+
+  <!-- Spaced caps ACADEMY -->
+  <text x="8" y="65" font-family="'Montserrat', system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="0.36em" fill="#dfbb5a">ACADEMY</text>
+</svg>
