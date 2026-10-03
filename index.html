@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aurelle Academy | Center for Advanced Aesthetic &amp; Beauty Training</title>
   <meta name="description" content="Aurelle Academy offers professional, hands-on clinical beauty education in lash application, microblading, micropigmentation, skin therapy, and nail architecture. Every certificate is verifiable online.">
-  <meta name="theme-color" content="#161412">
+  <meta name="theme-color" content="#fdfcfb">
   <meta property="og:title" content="Aurelle Academy | Professional Aesthetic Training">
   <meta property="og:description" content="Master-level aesthetic programs with clinical hygiene standards. Every graduate credential features instant cryptographic online verification.">
   <meta property="og:type" content="website">
@@ -13,6 +13,7 @@
   <meta property="og:image" content="https://aurelleacademy.github.io/assets/img/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/cormorant-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/montserrat-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/great-vibes.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/core.css">
@@ -41,7 +42,7 @@
       </a>
       <nav class="nav" aria-label="Primary Navigation">
         <a href="#programs">Programs</a>
-        <a href="#approach">Approach</a>
+        <a href="#approach">Philosophy</a>
         <a href="#credentials">Credential Verification</a>
         <a href="#faq">FAQ</a>
         <a href="#contact" data-contact-link hidden>Contact</a>
@@ -53,6 +54,22 @@
   <main id="main">
     <!-- Hero Section -->
     <section class="hero" aria-labelledby="hero-title">
+      <!-- Background Fluid Silk Waves -->
+      <svg class="hero__backdrop-wave" viewBox="0 0 600 450" fill="none" aria-hidden="true">
+        <path d="M150 0 C250 80, 420 120, 600 60 L600 0 Z" fill="url(#waveGrad1)" opacity="0.6"/>
+        <path d="M220 0 C320 140, 480 180, 600 110 L600 0 Z" fill="url(#waveGrad2)" opacity="0.4"/>
+        <defs>
+          <linearGradient id="waveGrad1" x1="150" y1="0" x2="600" y2="120" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#dfbb5a" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#c2942d" stop-opacity="0.05"/>
+          </linearGradient>
+          <linearGradient id="waveGrad2" x1="220" y1="0" x2="600" y2="180" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#c2942d" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#dfbb5a" stop-opacity="0.02"/>
+          </linearGradient>
+        </defs>
+      </svg>
+
       <div class="container hero__grid">
         <div class="hero__copy">
           <div class="hero__badge">
@@ -63,7 +80,7 @@
             Where Precision Becomes <span class="script">Artistry</span>
           </h1>
           <p class="hero__lead">
-            Hands-on clinical training in lash application, permanent makeup, skin barrier therapy, and precision aesthetics. Taught in intimate cohorts with unwavering devotion to tissue health, natural anatomy, and medical sanitation.
+            Hands-on clinical training in lash application, permanent makeup, skin barrier therapy, and precision aesthetics. Taught in intimate cohorts with unwavering devotion to tissue health, natural facial anatomy, and hospital-grade asepsis.
           </p>
           <div class="hero__actions">
             <a class="btn btn--gold" href="#programs">
@@ -78,29 +95,25 @@
           </div>
         </div>
 
+        <!-- High-Fashion Emblem Card Showcase -->
         <div class="hero__art" aria-hidden="true">
-          <div class="hero__ring"></div>
-          <div class="hero__glow"></div>
-          <svg class="hero__geometric" viewBox="0 0 240 240" fill="none" stroke="currentColor">
-            <!-- Concentric sacred geometry -->
-            <circle cx="120" cy="120" r="105" stroke="var(--gold-deep)" stroke-opacity="0.3" stroke-width="1.2" stroke-dasharray="4 4"/>
-            <circle cx="120" cy="120" r="85" stroke="var(--gold)" stroke-width="1.6"/>
-            <circle cx="120" cy="120" r="62" stroke="var(--gold-strong)" stroke-opacity="0.4" stroke-width="1"/>
-            
-            <!-- Ethereal Arch -->
-            <path d="M55 185 C65 110, 85 55, 120 40 C155 55, 175 110, 185 185" stroke="var(--gold)" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M72 175 C82 120, 98 75, 120 62 C142 75, 158 120, 168 175" stroke="var(--gold-strong)" stroke-width="1.4" stroke-linecap="round"/>
-            <path d="M90 145 Q120 160 150 145" stroke="var(--gold)" stroke-width="2"/>
-            
-            <!-- Center focal radiance -->
-            <circle cx="120" cy="115" r="5" fill="var(--gold-strong)"/>
-            <circle cx="120" cy="40" r="2.5" fill="#ffffff"/>
-          </svg>
+          <div class="hero__art-card">
+            <svg class="hero__emblem-lg" viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-opacity="0.3" stroke-width="1.2" stroke-dasharray="2 3"/>
+              <circle cx="50" cy="50" r="41" stroke="currentColor" stroke-width="2"/>
+              <path d="M50 18 C43 32, 28 58, 25 76" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+              <path d="M50 18 C57 32, 72 58, 75 76" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+              <path d="M33 55 Q50 64 67 55" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+              <circle cx="50" cy="42" r="3.2" fill="currentColor"/>
+            </svg>
+            <span class="hero__brand-callout">Aurelle</span>
+            <span class="hero__sub-callout">ACADEMY</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Training Programs Section -->
+    <!-- Programs Atlas Section -->
     <section id="programs" class="section" aria-labelledby="programs-title">
       <div class="container">
         <div class="section__header">
@@ -114,7 +127,7 @@
         <div class="grid grid--programs">
           <!-- Program 1: Lash -->
           <article class="card program program--featured" data-reveal>
-            <div class="program__badge">Core Curriculum</div>
+            <div class="program__badge">Core Track</div>
             <div class="program__icon-wrap">
               <svg class="program__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M4 27c6-9 13-14 20-14s14 5 20 14"/>
@@ -219,7 +232,7 @@
             </p>
           </article>
 
-          <!-- Program 7: Nail Architecture -->
+          <!-- Program 7: Russian Manicure -->
           <article class="card program" data-reveal>
             <div class="program__icon-wrap">
               <svg class="program__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -249,7 +262,7 @@
         </div>
 
         <div class="pillars-grid">
-          <div class="pillar card" data-reveal>
+          <div class="pillar" data-reveal>
             <span class="pillar__num">01</span>
             <h3 class="pillar__title">Facial Morphology Over Stencils</h3>
             <p class="pillar__desc">
@@ -257,7 +270,7 @@
             </p>
           </div>
 
-          <div class="pillar card" data-reveal>
+          <div class="pillar" data-reveal>
             <span class="pillar__num">02</span>
             <h3 class="pillar__title">Hospital-Grade Asepsis</h3>
             <p class="pillar__desc">
@@ -265,7 +278,7 @@
             </p>
           </div>
 
-          <div class="pillar card" data-reveal>
+          <div class="pillar" data-reveal>
             <span class="pillar__num">03</span>
             <h3 class="pillar__title">Diagnostic Honesty</h3>
             <p class="pillar__desc">
@@ -273,7 +286,7 @@
             </p>
           </div>
 
-          <div class="pillar card" data-reveal>
+          <div class="pillar" data-reveal>
             <span class="pillar__num">04</span>
             <h3 class="pillar__title">Supervised Clinical Practice</h3>
             <p class="pillar__desc">
@@ -284,7 +297,7 @@
       </div>
     </section>
 
-    <!-- Credential Verification Section (With Certificate Mockup) -->
+    <!-- Credential Verification Section (With Realistic Silk Certificate Mockup) -->
     <section id="credentials" class="section" aria-labelledby="credentials-title">
       <div class="container">
         <div class="credentials__layout">
@@ -292,7 +305,7 @@
             <span class="eyebrow">Credential Authentication</span>
             <h2 id="credentials-title" class="section__title">Verifiable Authenticity for Every Graduate</h2>
             <p class="credentials__lead">
-              In an era of counterfeit diplomas, Aurelle Academy issues every credential with a permanent cryptographic ledger entry. Clients, employers, and salon directors can instantly verify authenticity with a camera scan.
+              Every graduate credential features a permanent cryptographic ledger entry. Clients, employers, and salon directors can instantly verify authenticity with a camera scan.
             </p>
             <div class="credentials__highlights">
               <div class="highlight-item">
@@ -324,9 +337,19 @@
             </div>
           </div>
 
-          <!-- Realistic Certificate Mockup -->
+          <!-- Realistic Silk Ivory Certificate Mockup -->
           <div class="cert-mockup-wrap" data-reveal>
             <div class="cert-mockup">
+              <!-- Corner Ribbon Waves -->
+              <svg class="cert-mockup__corner-wave" viewBox="0 0 140 100" fill="none" aria-hidden="true">
+                <path d="M0 0 L140 0 C100 40, 50 60, 0 100 Z" fill="#eee7d5" opacity="0.7"/>
+                <path d="M0 0 L100 0 C70 30, 30 50, 0 70 Z" fill="#dfbb5a" opacity="0.4"/>
+              </svg>
+              <svg class="cert-mockup__corner-wave-bottom" viewBox="0 0 140 100" fill="none" aria-hidden="true">
+                <path d="M140 100 L0 100 C40 60, 90 40, 140 0 Z" fill="#eee7d5" opacity="0.7"/>
+                <path d="M140 100 L40 100 C70 70, 110 50, 140 30 Z" fill="#dfbb5a" opacity="0.4"/>
+              </svg>
+
               <div class="cert-mockup__header">
                 <svg class="cert-mockup__logo" viewBox="0 0 100 100" fill="none" aria-hidden="true">
                   <circle cx="50" cy="50" r="41" stroke="currentColor" stroke-width="2.5"/>
@@ -341,7 +364,7 @@
               
               <div class="cert-mockup__body">
                 <span class="cert-mockup__present">PROUDLY PRESENTED TO</span>
-                <span class="cert-mockup__student script">Zeinab Shirini</span>
+                <span class="cert-mockup__student">Zeinab Shirini</span>
                 <div class="cert-mockup__divider"></div>
                 <p class="cert-mockup__text">
                   In recognition of the successful completion of the intensive training course in
@@ -376,7 +399,7 @@
         </div>
 
         <div class="faq-list">
-          <details class="card faq-item" data-reveal>
+          <details class="faq-item" data-reveal>
             <summary class="faq-item__question">
               <span>What does an Aurelle Academy certificate signify?</span>
               <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -385,12 +408,12 @@
             </summary>
             <div class="faq-item__answer">
               <p>
-                An Aurelle Academy certificate attests that the graduate has successfully mastered our rigorous curriculum, completed hands-on clinical training, and adhered to our strict sanitation and execution standards. It is issued directly by our private academy as a mark of practical competence.
+                An Aurelle Academy certificate attests that the graduate has successfully mastered our curriculum, completed hands-on clinical training, and adhered to our strict sanitation and execution standards. It is issued directly by our private academy as a mark of practical competence.
               </p>
             </div>
           </details>
 
-          <details class="card faq-item" data-reveal>
+          <details class="faq-item" data-reveal>
             <summary class="faq-item__question">
               <span>How does the online verification system work?</span>
               <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -399,12 +422,12 @@
             </summary>
             <div class="faq-item__answer">
               <p>
-                Each certificate features a high-density QR code pointing directly to our verification portal alongside an alphanumeric ID (e.g., <code>AUR-J2GA-U9PB</code>). Entering this code retrieves the candidate's verified name, course title, and completion date from an encrypted ledger.
+                Each certificate features a scannable QR code pointing directly to our verification portal alongside an alphanumeric ID (e.g., <code>AUR-J2GA-U9PB</code>). Entering this code retrieves the candidate's verified name, course title, and completion date from an encrypted ledger.
               </p>
             </div>
           </details>
 
-          <details class="card faq-item" data-reveal>
+          <details class="faq-item" data-reveal>
             <summary class="faq-item__question">
               <span>Is prior aesthetic experience required to enroll?</span>
               <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -418,7 +441,7 @@
             </div>
           </details>
 
-          <details class="card faq-item" data-reveal>
+          <details class="faq-item" data-reveal>
             <summary class="faq-item__question">
               <span>What hygiene and safety protocols are taught?</span>
               <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

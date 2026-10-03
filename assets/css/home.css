@@ -1,85 +1,105 @@
-/* home.css - Aurelle Academy landing page styling */
+/* home.css - Aurelle Academy Editorial Landing Styles
+   Style: Luxury Ivory & Champagne */
 
 /* ---------- Hero Section ---------- */
 .hero {
   position: relative;
   overflow: hidden;
-  padding-block: clamp(3.5rem, 8vw, 6.5rem);
+  padding-block: clamp(4rem, 9vw, 7.5rem);
   background:
-    radial-gradient(ellipse 65% 55% at 85% 15%, oklch(0.32 0.08 85 / 0.28), transparent 60%),
-    radial-gradient(ellipse 50% 50% at 5% 95%, oklch(0.24 0.05 85 / 0.32), transparent 65%),
+    radial-gradient(ellipse 60% 50% at 90% 10%, oklch(0.93 0.04 85 / 0.7), transparent 60%),
+    radial-gradient(ellipse 50% 50% at 10% 90%, oklch(0.94 0.03 85 / 0.5), transparent 65%),
     var(--bg-0);
   border-bottom: 1px solid var(--line-soft);
 }
 
+/* Background Fluid Ribbons (matching certificate waves) */
+.hero__backdrop-wave {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 55vw;
+  max-width: 700px;
+  height: auto;
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 1;
+}
+
 .hero__grid {
+  position: relative;
+  z-index: 2;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
-  gap: clamp(2rem, 5vw, 4rem);
+  gap: clamp(2.5rem, 6vw, 4.5rem);
 }
 
 .hero__badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  background: oklch(0.20 0.015 85);
+  gap: 0.65rem;
+  background: var(--bg-card);
   border: 1px solid var(--line);
-  padding: 0.4rem 1rem;
+  padding: 0.45rem 1.15rem;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--gold-strong);
-  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-subtle);
+  margin-bottom: 1.6rem;
 }
 
 .pulse-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--gold-strong);
-  box-shadow: 0 0 0 0 oklch(0.88 0.12 90 / 0.6);
-  animation: pulse-ring 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  box-shadow: 0 0 0 0 oklch(0.68 0.15 80 / 0.6);
+  animation: pulse-ring 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
 @keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 oklch(0.88 0.12 90 / 0.6); }
-  70% { box-shadow: 0 0 0 8px oklch(0.88 0.12 90 / 0); }
-  100% { box-shadow: 0 0 0 0 oklch(0.88 0.12 90 / 0); }
+  0% { box-shadow: 0 0 0 0 oklch(0.68 0.15 80 / 0.6); }
+  70% { box-shadow: 0 0 0 8px oklch(0.68 0.15 80 / 0); }
+  100% { box-shadow: 0 0 0 0 oklch(0.68 0.15 80 / 0); }
 }
 
 .hero__title {
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-  font-weight: 800;
-  line-height: 1.06;
-  letter-spacing: -0.025em;
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
   color: var(--text);
 }
 
 .hero__title .script {
-  font-size: 1.28em;
+  font-size: 1.25em;
   font-weight: 400;
   letter-spacing: 0;
-  background: linear-gradient(135deg, #ffffff 10%, var(--gold-strong) 100%);
+  background: linear-gradient(135deg, var(--gold-strong) 20%, var(--gold) 80%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: inline-block;
+  padding-left: 0.1em;
 }
 
 .hero__lead {
-  margin-top: 1.5rem;
+  margin-top: 1.6rem;
   max-width: 52ch;
   font-size: clamp(1rem, 1.8vw, 1.15rem);
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--text-muted);
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2.25rem;
+  gap: 1.1rem;
+  margin-top: 2.4rem;
 }
 
 .hero__art {
@@ -87,35 +107,59 @@
   display: grid;
   place-items: center;
   aspect-ratio: 1;
-  max-width: 26rem;
+  max-width: 25rem;
   margin-inline: auto;
   width: 100%;
 }
 
-.hero__ring {
-  position: absolute;
-  inset: 4%;
-  border-radius: 50%;
+.hero__art-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(145deg, #ffffff, var(--bg-1));
   border: 1px solid var(--line);
-  background: radial-gradient(circle at 40% 35%, oklch(0.24 0.04 85 / 0.7), transparent 70%);
-  box-shadow: inset 0 0 50px oklch(0.82 0.13 85 / 0.08), 0 0 70px oklch(0.82 0.13 85 / 0.12);
+  border-radius: var(--radius-l);
+  box-shadow: 0 25px 50px -15px oklch(0.2 0.02 60 / 0.12), 0 0 1px oklch(0.2 0.02 60 / 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  text-align: center;
 }
 
-.hero__glow {
+.hero__art-card::before {
+  content: "";
   position: absolute;
-  width: 60%;
-  height: 60%;
-  border-radius: 50%;
-  background: var(--gold-glow);
-  filter: blur(40px);
+  inset: 10px;
+  border: 1px dashed var(--line);
+  border-radius: calc(var(--radius-l) - 8px);
   pointer-events: none;
 }
 
-.hero__geometric {
-  position: relative;
-  width: 78%;
+.hero__emblem-lg {
+  width: 6.5rem;
+  height: 6.5rem;
   color: var(--gold);
-  filter: drop-shadow(0 0 16px oklch(0.82 0.13 85 / 0.35));
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 6px 16px var(--gold-glow));
+}
+
+.hero__brand-callout {
+  font-family: var(--font-script);
+  font-size: 2.4rem;
+  color: var(--gold-strong);
+  line-height: 1;
+}
+
+.hero__sub-callout {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
 }
 
 @media (max-width: 56rem) {
@@ -128,9 +172,10 @@
   }
 }
 
-/* ---------- Section Primitives ---------- */
+/* ---------- Section Architecture ---------- */
 .section {
-  padding-block: clamp(3.5rem, 8vw, 6rem);
+  position: relative;
+  padding-block: clamp(4rem, 8vw, 6.5rem);
 }
 
 .section--alt {
@@ -139,76 +184,90 @@
 }
 
 .section__header {
-  margin-bottom: 3rem;
-  max-width: 44rem;
+  margin-bottom: 3.25rem;
+  max-width: 46rem;
 }
 
 .section__title {
-  font-size: clamp(1.8rem, 4vw, 2.7rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  color: var(--text);
 }
 
 .section__lead {
-  margin-top: 1rem;
-  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  margin-top: 1.1rem;
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
   color: var(--text-muted);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 .container--narrow {
-  max-width: 48rem;
+  max-width: 50rem;
 }
 
-/* ---------- Programs Grid ---------- */
+/* ---------- Programs Atlas Grid ---------- */
 .grid--programs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  gap: 1.65rem;
 }
 
 .program {
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  background: #ffffff;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.28s var(--ease), border-color 0.28s var(--ease), box-shadow 0.28s var(--ease);
 }
 
 .program:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   border-color: var(--gold);
-  box-shadow: 0 20px 40px -15px var(--gold-glow);
+  box-shadow: 0 25px 45px -15px var(--gold-glow), 0 0 1px oklch(0.2 0.02 60 / 0.15);
 }
 
 .program--featured {
-  border-color: oklch(0.82 0.13 85 / 0.35);
-  background: linear-gradient(180deg, oklch(0.23 0.015 85), var(--bg-1));
+  border-color: oklch(0.84 0.04 85);
+  background: linear-gradient(180deg, #ffffff, var(--bg-1));
 }
 
 .program__badge {
   align-self: flex-start;
+  font-family: var(--font-ui);
   font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--gold-strong);
-  background: oklch(0.82 0.13 85 / 0.12);
-  border: 1px solid oklch(0.82 0.13 85 / 0.3);
-  padding: 0.25rem 0.65rem;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  padding: 0.3rem 0.75rem;
   border-radius: 999px;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.35rem;
 }
 
 .program__icon-wrap {
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 3.25rem;
+  height: 3.25rem;
   border-radius: var(--radius-m);
-  background: oklch(0.24 0.02 85 / 0.8);
+  background: var(--bg-1);
   border: 1px solid var(--line);
   display: grid;
   place-items: center;
   color: var(--gold);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.35rem;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.program:hover .program__icon-wrap {
+  background: var(--gold);
+  color: #ffffff;
 }
 
 .program__icon {
@@ -217,37 +276,39 @@
 }
 
 .program__title {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
   letter-spacing: -0.01em;
-  margin-bottom: 0.65rem;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
   color: var(--text);
 }
 
 .program__desc {
   font-size: 0.92rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .program__features {
   list-style: none;
   padding: 0;
-  margin-top: 1.2rem;
-  padding-top: 1rem;
+  margin-top: 1.35rem;
+  padding-top: 1.15rem;
   border-top: 1px solid var(--line-soft);
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.55rem;
 }
 
 .program__features li {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 600;
   color: var(--text-muted);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .program__features li::before {
@@ -259,180 +320,233 @@
   flex: none;
 }
 
-/* ---------- Pillars (Approach) ---------- */
+/* ---------- Pillars of Philosophy ---------- */
 .pillars-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: 1.5rem;
+  gap: 1.65rem;
 }
 
 .pillar {
   display: flex;
   flex-direction: column;
+  background: #ffffff;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  padding: 2.25rem 1.85rem;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s var(--ease);
+}
+
+.pillar:hover {
+  transform: translateY(-4px);
 }
 
 .pillar__num {
-  font-family: var(--font-script);
+  font-family: var(--font-serif);
   font-size: 3.2rem;
+  font-style: italic;
   line-height: 1;
-  color: var(--gold-strong);
-  margin-bottom: 0.75rem;
+  color: var(--gold);
+  margin-bottom: 0.9rem;
 }
 
 .pillar__title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 0.55rem;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 0.65rem;
+  color: var(--text);
 }
 
 .pillar__desc {
   font-size: 0.92rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-/* ---------- Credentials & Certificate Mockup ---------- */
+/* ---------- Credential Showcase & Realistic Certificate Mockup ---------- */
 .credentials__layout {
   display: grid;
   grid-template-columns: 1fr 1.05fr;
   align-items: center;
-  gap: clamp(2rem, 5vw, 4rem);
+  gap: clamp(2.5rem, 6vw, 4.5rem);
 }
 
 .credentials__lead {
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   color: var(--text-muted);
-  line-height: 1.65;
-  margin-top: 1rem;
-  margin-bottom: 1.75rem;
+  line-height: 1.75;
+  margin-top: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .credentials__highlights {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  margin-bottom: 2rem;
+  gap: 1rem;
+  margin-bottom: 2.25rem;
 }
 
 .highlight-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  font-size: 0.9rem;
+  gap: 0.85rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--text);
 }
 
 .highlight-item svg {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.25rem;
+  height: 1.25rem;
   color: var(--gold);
   flex: none;
   margin-top: 0.15rem;
 }
 
 .cert-mockup-wrap {
-  perspective: 1000px;
+  perspective: 1200px;
 }
 
+/* Authentic Ivory Certificate Mockup */
 .cert-mockup {
-  background: linear-gradient(145deg, #1c1a17, #131210);
-  border: 1px solid var(--gold);
+  background: #ffffff;
+  border: 2px solid var(--line);
   border-radius: var(--radius-l);
-  padding: 2rem;
-  box-shadow: 0 30px 60px -15px oklch(0 0 0 / 0.8), 0 0 30px var(--gold-glow);
+  padding: 2.5rem 2.25rem;
+  box-shadow: 
+    0 30px 60px -15px oklch(0.2 0.02 60 / 0.14),
+    0 0 0 1px #ffffff,
+    0 0 25px var(--gold-glow);
   position: relative;
   overflow: hidden;
 }
 
+/* Gold Frame Inset */
 .cert-mockup::before {
   content: "";
   position: absolute;
-  inset: 6px;
-  border: 1px dashed oklch(0.82 0.13 85 / 0.4);
-  border-radius: calc(var(--radius-l) - 6px);
+  inset: 10px;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius-l) - 8px);
   pointer-events: none;
+}
+
+/* Organic Silk Corner Wave (similar to actual certificate) */
+.cert-mockup__corner-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: auto;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.cert-mockup__corner-wave-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 140px;
+  height: auto;
+  pointer-events: none;
+  opacity: 0.9;
 }
 
 .cert-mockup__header {
   text-align: center;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.6rem;
+  position: relative;
+  z-index: 2;
 }
 
 .cert-mockup__logo {
-  width: 2.8rem;
-  height: 2.8rem;
-  color: var(--gold-strong);
+  width: 3rem;
+  height: 3rem;
+  color: var(--gold);
   margin-inline: auto;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .cert-mockup__title {
-  font-family: var(--font-script);
-  font-size: 1.8rem;
-  color: var(--gold-strong);
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text);
   line-height: 1;
 }
 
 .cert-mockup__subtitle {
-  font-size: 0.65rem;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-top: 0.25rem;
+  margin-top: 0.4rem;
 }
 
 .cert-mockup__body {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
+  position: relative;
+  z-index: 2;
 }
 
 .cert-mockup__present {
   display: block;
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
   color: var(--text-muted);
   font-weight: 600;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
 }
 
 .cert-mockup__student {
-  font-size: 2.2rem;
+  font-family: var(--font-script);
+  font-size: 2.8rem;
   line-height: 1.1;
-  color: #ffffff;
+  color: var(--gold-strong);
   display: block;
 }
 
 .cert-mockup__divider {
-  width: 50px;
+  width: 60px;
   height: 1px;
   background: var(--gold);
-  margin: 0.6rem auto;
+  margin: 0.7rem auto;
 }
 
 .cert-mockup__text {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
-  max-width: 32ch;
-  margin: 0 auto 0.4rem;
+  max-width: 34ch;
+  margin: 0 auto 0.5rem;
+  line-height: 1.5;
 }
 
 .cert-mockup__course {
-  font-size: 0.88rem;
-  font-weight: 700;
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 800;
   letter-spacing: 0.08em;
-  color: var(--gold);
+  text-transform: uppercase;
+  color: var(--text);
 }
 
 .cert-mockup__footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--line);
-  padding-top: 1rem;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 1.25rem;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
 }
 
 .cert-mockup__id-box {
@@ -441,31 +555,31 @@
 }
 
 .cert-mockup__id-lbl {
-  font-size: 0.62rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--text-muted);
 }
 
 .cert-mockup__id-val {
   font-family: monospace;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--gold-strong);
 }
 
 .cert-mockup__status {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.72rem;
+  gap: 0.5rem;
+  font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--ok);
   background: var(--ok-bg);
-  padding: 0.3rem 0.7rem;
+  padding: 0.35rem 0.85rem;
   border-radius: 999px;
-  border: 1px solid oklch(0.82 0.16 150 / 0.35);
+  border: 1px solid oklch(0.48 0.15 145 / 0.3);
 }
 
 @media (max-width: 54rem) {
@@ -478,25 +592,33 @@
 .faq-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .faq-item {
+  background: #ffffff;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  padding: 1.5rem 1.85rem;
+  box-shadow: var(--shadow-subtle);
   cursor: pointer;
-  transition: border-color 0.2s var(--ease);
+  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 
 .faq-item[open] {
   border-color: var(--gold);
+  box-shadow: 0 10px 25px -10px var(--gold-glow);
 }
 
 .faq-item__question {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  font-size: 1.05rem;
-  font-weight: 700;
+  gap: 1.25rem;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text);
   list-style: none;
   user-select: none;
 }
@@ -518,42 +640,12 @@
 }
 
 .faq-item__answer {
-  margin-top: 1rem;
-  padding-top: 1rem;
+  margin-top: 1.1rem;
+  padding-top: 1.1rem;
   border-top: 1px solid var(--line-soft);
   font-size: 0.95rem;
   color: var(--text-muted);
-  line-height: 1.65;
-}
-
-/* ---------- Footer Extras ---------- */
-.site-footer__links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.site-footer__links a {
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.site-footer__links a:hover {
-  color: var(--gold-strong);
-}
-
-.site-footer__bottom {
-  margin-top: 1.5rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--line-soft);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  font-size: 0.78rem;
-  color: var(--text-muted);
+  line-height: 1.7;
 }
 
 /* ---------- Scroll-Driven Animations ---------- */
@@ -562,7 +654,7 @@
     [data-reveal] {
       animation: card-reveal linear both;
       animation-timeline: view();
-      animation-range: entry 0% entry 35%;
+      animation-range: entry 0% entry 30%;
     }
 
     @keyframes card-reveal {

@@ -1,53 +1,58 @@
-/* components.css - shared components: header, buttons, cards, footer, wordmark. */
+/* components.css - Aurelle Academy Shared Components
+   Luxury Ivory & Champagne Aesthetic */
 
 /* ---------- Header ---------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: oklch(0.13 0.008 85 / 0.82);
-  backdrop-filter: blur(14px);
+  background: oklch(0.985 0.006 85 / 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--line-soft);
+  transition: background 0.3s var(--ease);
 }
 
 .site-header__row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  min-height: 4.25rem;
+  gap: 1.5rem;
+  min-height: 4.75rem;
 }
 
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.85rem;
   text-decoration: none;
 }
 
 .wordmark__mark {
-  width: 2.1rem;
-  height: 2.1rem;
+  width: 2.35rem;
+  height: 2.35rem;
   color: var(--gold);
   flex: none;
+  filter: drop-shadow(0 2px 4px var(--gold-glow));
 }
 
 .wordmark__text {
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
+  line-height: 1.05;
 }
 
 .wordmark__name {
   font-family: var(--font-script);
-  font-size: 1.7rem;
+  font-size: 1.85rem;
   color: var(--gold-strong);
 }
 
 .wordmark__sub {
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.32em;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.36em;
   text-transform: uppercase;
   color: var(--text-muted);
 }
@@ -55,17 +60,17 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: clamp(0.9rem, 2.5vw, 2rem);
+  gap: clamp(1rem, 2.5vw, 2.2rem);
 }
 
 .nav a {
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
-  transition: color 0.2s var(--ease);
+  transition: color 0.25s var(--ease);
 }
 
 .nav a:hover,
@@ -73,7 +78,7 @@
   color: var(--gold-strong);
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 46rem) {
   .nav a:not(.btn) {
     display: none;
   }
@@ -84,81 +89,101 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
-  padding: 0.85rem 1.5rem;
-  min-height: 2.75rem;
+  gap: 0.6rem;
+  padding: 0.85rem 1.65rem;
+  min-height: 2.9rem;
   border-radius: 999px;
   border: 1px solid transparent;
-  font: inherit;
-  font-size: 0.88rem;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease);
 }
 
 .btn svg {
   width: 1.05rem;
   height: 1.05rem;
+  flex: none;
 }
 
 .btn--gold {
-  background: linear-gradient(135deg, var(--gold-strong), var(--gold-deep));
-  color: var(--on-gold);
+  background: linear-gradient(135deg, var(--gold), var(--gold-strong));
+  color: #ffffff;
+  box-shadow: 0 4px 15px var(--gold-glow);
 }
 
 .btn--gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px var(--gold-glow);
+  box-shadow: 0 8px 24px oklch(0.68 0.15 80 / 0.28);
+  background: linear-gradient(135deg, oklch(0.72 0.15 82), var(--gold));
 }
 
 .btn--ghost {
-  background: transparent;
+  background: var(--bg-card);
   color: var(--text);
   border-color: var(--line);
+  box-shadow: var(--shadow-subtle);
 }
 
 .btn--ghost:hover {
   border-color: var(--gold);
   color: var(--gold-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--gold-glow);
 }
 
 .btn--sm {
-  padding: 0.55rem 1.1rem;
+  padding: 0.55rem 1.2rem;
+  min-height: 2.35rem;
   font-size: 0.78rem;
 }
 
 /* ---------- Cards ---------- */
 .card {
   position: relative;
-  background: linear-gradient(180deg, var(--bg-2), var(--bg-1));
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-l);
-  padding: clamp(1.4rem, 3vw, 2rem);
+  padding: clamp(1.6rem, 3.5vw, 2.25rem);
   box-shadow: var(--shadow-card);
+  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
 }
 
 .card::before {
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
-  height: 2px;
+  height: 2.5px;
   border-radius: var(--radius-l) var(--radius-l) 0 0;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0.8;
+  opacity: 0.75;
 }
 
-/* ---------- Typography helpers ---------- */
+/* ---------- Typography Helpers ---------- */
 .eyebrow {
-  display: inline-block;
-  font-size: 0.74rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.34em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1rem;
+  color: var(--gold-strong);
+  margin-bottom: 0.9rem;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--gold);
 }
 
 .script {
@@ -169,10 +194,11 @@
 
 /* ---------- Footer ---------- */
 .site-footer {
-  border-top: 1px solid var(--line-soft);
-  padding-block: 2.5rem;
+  background: var(--bg-1);
+  border-top: 1px solid var(--line);
+  padding-block: 3.5rem 2.5rem;
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
 }
 
 .site-footer__row {
@@ -180,22 +206,46 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--line-soft);
 }
 
-.site-footer a {
-  text-decoration-color: var(--line);
-  text-underline-offset: 4px;
+.site-footer__links {
+  display: flex;
+  gap: 1.75rem;
+  flex-wrap: wrap;
 }
 
-.site-footer a:hover {
+.site-footer__links a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  transition: color 0.2s var(--ease);
+}
+
+.site-footer__links a:hover {
   color: var(--gold-strong);
 }
 
 .disclaimer {
-  margin-top: 1.25rem;
-  font-size: 0.78rem;
-  line-height: 1.6;
+  margin-top: 1.75rem;
+  font-size: 0.8rem;
+  line-height: 1.7;
   color: var(--text-muted);
-  max-width: 62ch;
+  max-width: 68ch;
+}
+
+.site-footer__bottom {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
 }

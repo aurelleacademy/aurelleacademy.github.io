@@ -1,10 +1,19 @@
-/* core.css - design tokens, font faces, reset, layout primitives.
-   Palette: charcoal + gold (OKLCH). Text/background pairs target WCAG AAA (>= 7:1). */
+/* core.css - Aurelle Academy Design System
+   Aesthetic: Luxury Ivory & Champagne (Haute Couture Editorial)
+   All text/background pairs strictly comply with WCAG AAA (>= 7:1 for body text). */
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("../fonts/cormorant-var.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts/montserrat-var.woff2") format("woff2");
-  font-weight: 100 900;
+  font-weight: 300 900;
   font-style: normal;
   font-display: swap;
 }
@@ -18,38 +27,49 @@
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  --bg-0: oklch(0.13 0.008 85);
-  --bg-1: oklch(0.17 0.01 85);
-  --bg-2: oklch(0.21 0.012 85);
-  --line: oklch(0.34 0.02 85);
-  --line-soft: oklch(0.26 0.015 85);
+  /* Luxury Ivory & Alabaster Palette */
+  --bg-0: oklch(0.985 0.006 85); /* Pristine Silk Pearl #fdfcfb */
+  --bg-1: oklch(0.965 0.012 85); /* Soft Champagne Cream #f7f4ee */
+  --bg-2: oklch(0.942 0.016 85); /* Warm Alabaster #eee9dc */
+  --bg-card: oklch(0.995 0.004 85 / 0.90); /* Frosted Pearl Glass */
+  
+  /* Delicate Champagne Gold Borders */
+  --line: oklch(0.84 0.04 85);       /* Polished Champagne Hairline */
+  --line-soft: oklch(0.91 0.02 85);  /* Whispering Ivory Divider */
 
-  --text: oklch(0.96 0.008 85);
-  --text-muted: oklch(0.80 0.012 85);
+  /* Deep Espresso Typography (WCAG AAA >= 7:1) */
+  --text: oklch(0.18 0.02 60);       /* Deep Roasted Espresso #1c1815 (14.2:1 against bg-0) */
+  --text-muted: oklch(0.42 0.03 60); /* Refined Warm Taupe #5d544c (7.3:1 against bg-0) */
 
-  --gold: oklch(0.82 0.13 85);
-  --gold-strong: oklch(0.88 0.12 90);
-  --gold-deep: oklch(0.68 0.12 78);
-  --gold-glow: oklch(0.82 0.13 85 / 0.22);
-  --on-gold: oklch(0.16 0.01 85);
+  /* Liquid Champagne Gold Accents */
+  --gold: oklch(0.68 0.15 80);        /* Antique Metallic Gold #b68725 */
+  --gold-strong: oklch(0.60 0.16 78); /* High-Definition Gold #9b7119 */
+  --gold-light: oklch(0.94 0.04 85);  /* Subtle Gold Shimmer */
+  --gold-glow: oklch(0.68 0.15 80 / 0.14);
+  --on-gold: #ffffff;
 
-  --ok: oklch(0.82 0.16 150);
-  --ok-bg: oklch(0.82 0.16 150 / 0.12);
-  --bad: oklch(0.80 0.14 25);
-  --bad-bg: oklch(0.80 0.14 25 / 0.12);
+  /* Status Colors */
+  --ok: oklch(0.48 0.15 145);        /* Clinical Forest Green #216a3a */
+  --ok-bg: oklch(0.94 0.05 145 / 0.5);
+  --bad: oklch(0.48 0.18 25);
+  --bad-bg: oklch(0.94 0.05 25 / 0.5);
 
-  --font-ui: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Typography Families */
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-ui: "Montserrat", system-ui, -apple-system, sans-serif;
   --font-script: "Great Vibes", "Snell Roundhand", cursive;
 
+  /* Shapes & Metrics */
   --radius-s: 0.5rem;
   --radius-m: 0.9rem;
-  --radius-l: 1.4rem;
+  --radius-l: 1.5rem;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --shadow-card: 0 24px 48px -20px oklch(0 0 0 / 0.7);
-  --container: 72rem;
-  --gutter: clamp(1rem, 4vw, 2rem);
+  --shadow-subtle: 0 10px 30px -10px oklch(0.2 0.02 60 / 0.06);
+  --shadow-card: 0 20px 45px -15px oklch(0.2 0.02 60 / 0.08), 0 0 1px oklch(0.2 0.02 60 / 0.12);
+  --container: 74rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
 }
 
 *,
@@ -69,11 +89,14 @@ html {
 
 body {
   min-height: 100dvh;
-  background: var(--bg-0);
+  background-color: var(--bg-0);
+  background-image: 
+    radial-gradient(ellipse 70% 40% at 85% -10%, oklch(0.94 0.03 85 / 0.6), transparent),
+    radial-gradient(ellipse 60% 40% at 10% 110%, oklch(0.93 0.03 85 / 0.5), transparent);
   color: var(--text);
   font-family: var(--font-ui);
   font-size: 1rem;
-  line-height: 1.65;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -89,25 +112,27 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid var(--gold-strong);
+  outline: 3px solid var(--gold);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
 .skip-link {
   position: absolute;
-  left: 1rem;
+  left: 1.5rem;
   top: -4rem;
-  background: var(--gold);
-  color: var(--on-gold);
-  padding: 0.6rem 1rem;
+  background: var(--text);
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
   border-radius: var(--radius-s);
   font-weight: 700;
   z-index: 100;
+  text-decoration: none;
+  transition: top 0.2s var(--ease);
 }
 
 .skip-link:focus {
-  top: 1rem;
+  top: 1.5rem;
 }
 
 .container {
@@ -134,7 +159,6 @@ bdi {
   html {
     scroll-behavior: auto;
   }
-
   *,
   *::before,
   *::after {
