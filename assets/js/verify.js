@@ -92,7 +92,7 @@
 
   async function loadRegistry() {
     if (registry) return registry;
-    const res = await fetch("../data/certificates.json", { cache: "no-cache" });
+    const res = await fetch("../data/certificates.json?_t=" + Date.now(), { cache: "no-cache" });
     if (!res.ok) throw new Error("registry unavailable");
     registry = await res.json();
     return registry;
@@ -169,6 +169,11 @@
     const course = el("p", "result__course", record.course);
     courseWrap.append(courseEyebrow, course);
 
+    if (record.statement) {
+      const stmt = el("p", "result__statement", record.statement);
+      courseWrap.append(stmt);
+    }
+
     candidateSection.append(certEyebrow, name, courseWrap);
 
     // 4. Institutional Security Grid (6 Key Metadata Fields)
@@ -202,7 +207,7 @@
       </div>
     `;
 
-    // 6. Action Toolbar (Print / PDF)
+    // 6. Action Toolbar (Print / PDF & Direct Link Copy)
     const actions = el("div", "result__actions");
     const printBtn = el("button", "btn btn--gold result__print-btn");
     printBtn.type = "button";
@@ -212,7 +217,51 @@
     `;
     printBtn.addEventListener("click", () => window.print());
 
-    actions.append(printBtn);
+    const copyBtn = el("button", "btn btn--ghost result__copy-btn");
+    copyBtn.type = "button";
+    copyBtn.innerHTML = `
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      <span>Copy Direct Verification Link</span>
+    `;
+
+    copyBtn.addEventListener("click", async () => {
+      const shareUrl = `${window.location.origin}${window.location.pathname}?id=${encodeURIComponent(record.id)}`;
+      let ok = false;
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(shareUrl);
+          ok = true;
+        } else {
+          const ta = document.createElement("textarea");
+          ta.value = shareUrl;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          ok = document.execCommand("copy");
+          document.body.removeChild(ta);
+        }
+      } catch (err) {
+        ok = false;
+      }
+
+      if (ok) {
+        copyBtn.classList.add("is-copied");
+        copyBtn.innerHTML = `
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Verification Link Copied!</span>
+        `;
+        setTimeout(() => {
+          copyBtn.classList.remove("is-copied");
+          copyBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span>Copy Direct Verification Link</span>
+          `;
+        }, 2500);
+      }
+    });
+
+    actions.append(printBtn, copyBtn);
 
     card.append(header, statusWrap, candidateSection, grid, footerMeta, actions);
     result.replaceChildren(card);

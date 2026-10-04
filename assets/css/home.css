@@ -464,6 +464,21 @@
 
 .cert-mockup-wrap {
   perspective: 1200px;
+  position: relative;
+}
+
+.cert-mockup-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+}
+
+.cert-mockup-link:focus-visible .cert-mockup {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
 }
 
 /* Authentic Ivory Certificate Mockup with 3D Interactive Parallax */
@@ -479,8 +494,48 @@
   position: relative;
   overflow: hidden;
   transform-style: preserve-3d;
-  transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   will-change: transform;
+}
+
+.cert-mockup-wrap:hover .cert-mockup {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 35px 75px -15px oklch(0.2 0.02 60 / 0.18),
+    0 0 0 1px oklch(0.68 0.15 80 / 0.4),
+    0 0 35px var(--gold-glow);
+  border-color: var(--gold);
+}
+
+.cert-mockup__inspect-pill {
+  position: absolute;
+  bottom: -0.95rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.2rem;
+  background: var(--text);
+  color: #ffffff;
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 25px oklch(0.2 0.02 60 / 0.25);
+  transition: all 0.25s var(--ease);
+  z-index: 15;
+  white-space: nowrap;
+  border: 1px solid var(--gold);
+}
+
+.cert-mockup-wrap:hover .cert-mockup__inspect-pill {
+  background: var(--gold-strong);
+  color: #ffffff;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 8px 25px var(--gold-glow);
 }
 
 .cert-mockup__shimmer {

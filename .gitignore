@@ -16,3 +16,4 @@ scratch/
 admin/.session_token
 *.icc
 test_*.png
+tools/backups/
