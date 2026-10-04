@@ -11,4 +11,8 @@ cert-studio.html
 preview.html
 tools/*.png
 tools/*.webp
-tools/*.svg
+output/
+scratch/
+admin/.session_token
+*.icc
+test_*.png

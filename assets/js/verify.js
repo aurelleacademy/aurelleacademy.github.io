@@ -223,7 +223,8 @@
     requestAnimationFrame(() => {
       setTimeout(() => {
         const rect = card.getBoundingClientRect();
-        const targetScroll = window.pageYOffset + rect.top - 60;
+        const headerOffset = window.innerWidth <= 600 ? 80 : 90;
+        const targetScroll = window.pageYOffset + rect.top - headerOffset;
         window.scrollTo({
           top: Math.max(0, targetScroll),
           behavior: "smooth"
@@ -245,7 +246,8 @@
     requestAnimationFrame(() => {
       setTimeout(() => {
         const rect = card.getBoundingClientRect();
-        const targetScroll = window.pageYOffset + rect.top - 60;
+        const headerOffset = window.innerWidth <= 600 ? 80 : 90;
+        const targetScroll = window.pageYOffset + rect.top - headerOffset;
         window.scrollTo({
           top: Math.max(0, targetScroll),
           behavior: "smooth"
