@@ -11,10 +11,37 @@
   const ID_ALPHABET = /^[A-HJ-NP-Z2-9]+$/;
 
   const form = document.getElementById("verify-form");
-  const input = document.getElementById("cert-id");
+  const p1 = document.getElementById("cert-part-1");
+  const p2 = document.getElementById("cert-part-2");
+  const p3 = document.getElementById("cert-part-3");
   const button = document.getElementById("verify-btn");
+  const clearBtn = document.getElementById("verify-clear-btn");
+  const sampleBtn = document.querySelector(".verify__sample-pill");
   const result = document.getElementById("result");
   const statusLive = document.getElementById("cert-status");
+
+  function getFullId() {
+    const val1 = (p1 ? p1.value : ID_PREFIX) || ID_PREFIX;
+    const val2 = (p2 ? p2.value : "").trim();
+    const val3 = (p3 ? p3.value : "").trim();
+    return `${val1}-${val2}-${val3}`;
+  }
+
+  function setPartsFromRaw(raw) {
+    const cleaned = normalizeId(raw);
+    if (!cleaned) {
+      if (p2) p2.value = "";
+      if (p3) p3.value = "";
+      return;
+    }
+    let body = cleaned;
+    if (body.startsWith(ID_PREFIX)) {
+      body = body.slice(ID_PREFIX.length);
+    }
+    if (p1) p1.value = ID_PREFIX;
+    if (p2) p2.value = body.slice(0, 4);
+    if (p3) p3.value = body.slice(4, 8);
+  }
 
   let registry = null;
 
@@ -205,10 +232,12 @@
 
   async function verify(raw) {
     const normalized = normalizeId(raw);
-    input.removeAttribute("aria-invalid");
+    if (p2) p2.removeAttribute("aria-invalid");
+    if (p3) p3.removeAttribute("aria-invalid");
 
     if (!isValidShape(normalized)) {
-      input.setAttribute("aria-invalid", "true");
+      if (p2) p2.setAttribute("aria-invalid", "true");
+      if (p3) p3.setAttribute("aria-invalid", "true");
       renderMessage("That ID does not look right. It should look like AUR-XXXX-XXXX. Please check the certificate and try again.", "Check ID");
       return;
     }
@@ -232,21 +261,93 @@
     }
   }
 
-  input.addEventListener("input", () => {
-    const cleaned = input.value.toUpperCase().replace(/[^A-Z0-9-]/g, "");
-    if (cleaned !== input.value) input.value = cleaned;
-    input.removeAttribute("aria-invalid");
-  });
+  if (p2) {
+    p2.addEventListener("input", () => {
+      p2.value = p2.value.toUpperCase().replace(/[^A-Z0-9]/g, "");
+      p2.removeAttribute("aria-invalid");
+      if (p3) p3.removeAttribute("aria-invalid");
+      if (p2.value.length === 4 && p3) {
+        p3.focus();
+        p3.select();
+      }
+    });
+
+    p2.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        form.requestSubmit();
+      } else if ((e.key === "-" || e.key === " ") && p3) {
+        e.preventDefault();
+        p3.focus();
+      }
+    });
+  }
+
+  if (p3) {
+    p3.addEventListener("input", () => {
+      p3.value = p3.value.toUpperCase().replace(/[^A-Z0-9]/g, "");
+      if (p2) p2.removeAttribute("aria-invalid");
+      p3.removeAttribute("aria-invalid");
+      if (p3.value.length === 4 && p2 && p2.value.length === 4) {
+        form.requestSubmit();
+      }
+    });
+
+    p3.addEventListener("keydown", (e) => {
+      if (e.key === "Backspace" && p3.value.length === 0 && p2) {
+        e.preventDefault();
+        p2.focus();
+      } else if (e.key === "Enter") {
+        form.requestSubmit();
+      }
+    });
+  }
+
+  function handlePaste(e) {
+    e.preventDefault();
+    const pasted = (e.clipboardData || window.clipboardData).getData("text");
+    if (!pasted) return;
+    setPartsFromRaw(pasted);
+    const currentId = getFullId();
+    if (isValidShape(normalizeId(currentId))) {
+      verify(currentId);
+    } else if (p2 && p2.value.length < 4) {
+      p2.focus();
+    } else if (p3) {
+      p3.focus();
+    }
+  }
+
+  if (p1) p1.addEventListener("paste", handlePaste);
+  if (p2) p2.addEventListener("paste", handlePaste);
+  if (p3) p3.addEventListener("paste", handlePaste);
+
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      if (p2) p2.value = "";
+      if (p3) p3.value = "";
+      result.hidden = true;
+      result.replaceChildren();
+      if (p2) p2.focus();
+    });
+  }
+
+  if (sampleBtn) {
+    sampleBtn.addEventListener("click", () => {
+      const sample = sampleBtn.getAttribute("data-fill") || "AUR-J2GA-U9PB";
+      setPartsFromRaw(sample);
+      verify(sample);
+    });
+  }
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    verify(input.value);
+    verify(getFullId());
   });
 
   const params = new URLSearchParams(window.location.search);
   const fromUrl = params.get("id");
   if (fromUrl) {
-    input.value = fromUrl.toUpperCase().replace(/[^A-Z0-9-]/g, "");
+    setPartsFromRaw(fromUrl);
     verify(fromUrl);
   }
 })();

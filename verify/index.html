@@ -42,40 +42,123 @@
 
   <main id="main" class="verify">
     <div class="container verify__wrap">
-      <span class="eyebrow">Certificate verification</span>
-      <h1 class="verify__title">Verify a <span class="script">certificate</span></h1>
-      <p class="verify__lead">Enter the ID printed below the QR code on the certificate.</p>
+      <div class="verify__badge">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Swiss Cryptographic Registry &bull; Zero-Knowledge Decryption</span>
+      </div>
+      <h1 class="verify__title">Verify a <span class="script">credential</span></h1>
+      <p class="verify__lead">
+        Authenticate an official Aurelle Academy vocational qualification. Enter the 3-segment credential identifier embossed on the physical diploma or beneath the security QR code.
+      </p>
 
       <form id="verify-form" class="card verify__form" novalidate>
-        <label for="cert-id" class="verify__label">Certificate ID</label>
-        <div class="verify__row">
-          <input
-            id="cert-id"
-            class="verify__input"
-            type="text"
-            inputmode="text"
-            autocomplete="off"
-            autocapitalize="characters"
-            spellcheck="false"
-            maxlength="20"
-            placeholder="AUR-XXXX-XXXX"
-            aria-describedby="cert-hint cert-status"
-            required
-          >
-          <button id="verify-btn" class="btn btn--gold" type="submit">
+        <div class="verify__form-header">
+          <label class="verify__label" for="cert-part-2">Credential Identifier</label>
+          <span class="verify__security-indicator">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            AES-256-GCM Secure
+          </span>
+        </div>
+
+        <div class="segmented-control" role="group" aria-label="3-Part Certificate Identifier">
+          <!-- Segment 1: Prefix -->
+          <div class="segment segment--prefix">
+            <span class="segment__tag">PREFIX</span>
+            <input
+              id="cert-part-1"
+              class="segment__input segment__input--prefix"
+              type="text"
+              value="AUR"
+              maxlength="3"
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="Certificate Prefix"
+              readonly
+            >
+          </div>
+
+          <div class="segment-divider" aria-hidden="true">&ndash;</div>
+
+          <!-- Segment 2: Section 1 -->
+          <div class="segment">
+            <span class="segment__tag">SECTION 1</span>
+            <input
+              id="cert-part-2"
+              class="segment__input"
+              type="text"
+              inputmode="text"
+              maxlength="4"
+              placeholder="XXXX"
+              autocomplete="off"
+              autocapitalize="characters"
+              spellcheck="false"
+              aria-label="Certificate Section 1"
+              required
+            >
+          </div>
+
+          <div class="segment-divider" aria-hidden="true">&ndash;</div>
+
+          <!-- Segment 3: Section 2 -->
+          <div class="segment">
+            <span class="segment__tag">SECTION 2</span>
+            <input
+              id="cert-part-3"
+              class="segment__input"
+              type="text"
+              inputmode="text"
+              maxlength="4"
+              placeholder="XXXX"
+              autocomplete="off"
+              autocapitalize="characters"
+              spellcheck="false"
+              aria-label="Certificate Section 2"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="verify__actions-row">
+          <button id="verify-btn" class="btn btn--gold verify__submit-btn" type="submit">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-            Verify
+            Verify Credential
+          </button>
+          <button id="verify-clear-btn" class="verify__clear-btn" type="button" aria-label="Clear fields">
+            Clear
           </button>
         </div>
-        <p id="cert-hint" class="verify__hint">Letters and numbers only. Dashes are optional.</p>
+
+        <!-- Interactive Quick-Demo Fill -->
+        <div class="verify__sample">
+          <span>Sample credential:</span>
+          <button type="button" class="verify__sample-pill" data-fill="AUR-J2GA-U9PB">
+            Fill Demo (Zeinab Shirini &bull; AUR-J2GA-U9PB)
+          </button>
+        </div>
+
         <p id="cert-status" class="visually-hidden" role="status" aria-live="polite"></p>
       </form>
+
+      <!-- Trust Badges Strip -->
+      <div class="verify__trust-strip">
+        <div class="verify__trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>Tamper-Proof Ledger</span>
+        </div>
+        <div class="verify__trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Zero-Knowledge Query</span>
+        </div>
+        <div class="verify__trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m16 10-4 4-2-2"/></svg>
+          <span>Swiss Examination Seal</span>
+        </div>
+      </div>
 
       <section id="result" class="result" aria-live="polite" hidden></section>
 
       <p class="disclaimer">
-        Aurelle Academy is a private training academy. This page confirms that a certificate was issued by the academy
-        to its own graduate. It is not a government or licensing-body registry.
+        Aurelle Academy is a private training academy &amp; aesthetic examining board. This page confirms that a certificate was issued by the academy to its own graduate upon jury board examination. It does not constitute a public regulatory license.
       </p>
     </div>
   </main>

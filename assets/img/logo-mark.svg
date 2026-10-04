@@ -1,27 +1,66 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
-  <!-- Outer subtle luxury ring -->
-  <circle cx="50" cy="50" r="46" stroke="#dfbb5a" stroke-opacity="0.35" stroke-width="1.2" stroke-dasharray="2 3"/>
-  <circle cx="50" cy="50" r="41" stroke="url(#goldGrad)" stroke-width="1.8"/>
-  
-  <!-- Stylized Monogram A with Ethereal Lash/Arch Curves -->
-  <!-- Left arch of A -->
-  <path d="M50 18 C43 32, 28 58, 25 76" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round"/>
-  <!-- Right arch of A with delicate taper -->
-  <path d="M50 18 C57 32, 72 58, 75 76" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round"/>
-  <!-- Elegant crossbar forming an upward radiant smile/crescent -->
-  <path d="M33 55 Q50 64 67 55" stroke="url(#goldGrad)" stroke-width="2.2" stroke-linecap="round"/>
-  
-  <!-- Center radiant gem/starlet -->
-  <circle cx="50" cy="42" r="2.8" fill="url(#goldGrad)"/>
-  
-  <!-- Subtle top crest point -->
-  <circle cx="50" cy="18" r="1.5" fill="#fffbf0"/>
-
   <defs>
-    <linearGradient id="goldGrad" x1="20" y1="15" x2="80" y2="85" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#fff4d0"/>
-      <stop offset="50%" stop-color="#dfbb5a"/>
-      <stop offset="100%" stop-color="#b1882d"/>
+    <!-- Ultra-luxury Haute Couture Metallic Gold Gradients -->
+    <linearGradient id="goldLinear" x1="15%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="#fff9e8"/>
+      <stop offset="20%" stop-color="#f3d88c"/>
+      <stop offset="45%" stop-color="#dfbb5a"/>
+      <stop offset="75%" stop-color="#b88a2a"/>
+      <stop offset="100%" stop-color="#785310"/>
+    </linearGradient>
+    <radialGradient id="orbGrad" cx="38%" cy="32%" r="68%">
+      <stop offset="0%" stop-color="#fffbf0"/>
+      <stop offset="30%" stop-color="#f5dc93"/>
+      <stop offset="65%" stop-color="#dfbb5a"/>
+      <stop offset="90%" stop-color="#9c721c"/>
+      <stop offset="100%" stop-color="#6b490d"/>
+    </radialGradient>
+    <linearGradient id="ridgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#fff2cc" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
   </defs>
+
+  <!-- Delicate Outer Dashed Celestial Ring -->
+  <circle cx="50" cy="50" r="46" stroke="#dfbb5a" stroke-opacity="0.32" stroke-width="1.1" stroke-dasharray="2 3"/>
+
+  <!-- Circular Outer Frame Ring -->
+  <circle cx="50" cy="50" r="39.8" stroke="url(#goldLinear)" stroke-width="2.3"/>
+
+  <!-- Central Focal Orb (Pupil / Beauty Focal Point) -->
+  <circle cx="50" cy="62.7" r="6.6" fill="url(#orbGrad)"/>
+  <circle cx="50" cy="62.7" r="6.6" stroke="url(#goldLinear)" stroke-width="0.5"/>
+
+  <!-- Architectural 'A' Compass Arch Body -->
+  <path d="M 50,1.8 
+           C 49,9 41.5,32 32.5,52 
+           C 27.5,63 23.5,73 25.5,80.5 
+           C 26.2,80.5 28.5,75 33,65 
+           C 40,49 47,26 50,11 
+           C 53,26 60,49 67,65 
+           C 71.5,75 73.8,80.5 74.5,80.5 
+           C 76.5,73 72.5,63 67.5,52 
+           C 58.5,32 51,9 50,1.8 Z" 
+        fill="url(#goldLinear)"/>
+
+  <!-- Chiseled Spine / Ridge on Left Leg -->
+  <path d="M 50,3 C 48,15 41,38 34,58 C 29,70 26,78 26,80.5" 
+        stroke="url(#ridgeGrad)" stroke-width="0.7" stroke-linecap="round"/>
+
+  <!-- Chiseled Spine / Ridge on Right Leg -->
+  <path d="M 50,3 C 52,15 59,38 66,58 C 71,70 74,78 74,80.5" 
+        stroke="#593b08" stroke-opacity="0.35" stroke-width="0.7" stroke-linecap="round"/>
+
+  <!-- Sweeping Arched Eyelid / Golden Section Crossbar Body -->
+  <path d="M 9.5,62.5 
+           C 23,51 35.5,42.2 50,42.2 
+           C 64.5,42.2 77,51 90.5,62.5 
+           C 78,54.5 64.5,47.8 50,47.8 
+           C 35.5,47.8 22,54.5 9.5,62.5 Z" 
+        fill="url(#goldLinear)"/>
+
+  <!-- Eyelid Central Spine Highlight -->
+  <path d="M 12,61 C 24,51.8 36,44.8 50,44.8 C 64,44.8 76,51.8 88,61" 
+        stroke="url(#ridgeGrad)" stroke-width="0.7" stroke-linecap="round"/>
 </svg>
