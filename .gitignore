@@ -10,3 +10,5 @@ __pycache__/
 cert-studio.html
 preview.html
 tools/*.png
+tools/*.webp
+tools/*.svg
