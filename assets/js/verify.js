@@ -218,6 +218,18 @@
     result.replaceChildren(card);
     result.hidden = false;
     statusLive.textContent = "Certificate verified authentic and registered.";
+
+    // Automatic smooth scroll to result card
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        const rect = card.getBoundingClientRect();
+        const targetScroll = window.pageYOffset + rect.top - 60;
+        window.scrollTo({
+          top: Math.max(0, targetScroll),
+          behavior: "smooth"
+        });
+      }, 60);
+    });
   }
 
   function renderMessage(message, label) {
@@ -228,6 +240,18 @@
     result.replaceChildren(card);
     result.hidden = false;
     statusLive.textContent = message;
+
+    // Smooth scroll to feedback message
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        const rect = card.getBoundingClientRect();
+        const targetScroll = window.pageYOffset + rect.top - 60;
+        window.scrollTo({
+          top: Math.max(0, targetScroll),
+          behavior: "smooth"
+        });
+      }, 60);
+    });
   }
 
   async function verify(raw) {
@@ -242,10 +266,28 @@
       return;
     }
 
+    const originalBtnHtml = button.innerHTML;
     button.disabled = true;
-    statusLive.textContent = "Checking certificate.";
+    button.classList.add("btn--loading");
+    button.innerHTML = `
+      <svg class="btn__spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+        <path d="M12 2a10 10 0 0 1 10 10"/>
+      </svg>
+      <span>Decrypting Ledger...</span>
+    `;
+
+    const segBox = document.querySelector(".segmented-control");
+    if (segBox) segBox.classList.add("is-scanning");
+    statusLive.textContent = "Checking cryptographic ledger.";
+
     try {
-      const data = await loadRegistry();
+      // Gentle cryptographic micro-delay for realistic feedback
+      const [data] = await Promise.all([
+        loadRegistry(),
+        new Promise((resolve) => setTimeout(resolve, 360))
+      ]);
+
       const { lookup, aesRaw } = await deriveKeys(normalized, data.iter);
       const entry = data.records && data.records[lookup];
       if (!entry) {
@@ -258,6 +300,9 @@
       renderMessage("Verification is temporarily unavailable. Please try again in a moment.");
     } finally {
       button.disabled = false;
+      button.classList.remove("btn--loading");
+      button.innerHTML = originalBtnHtml;
+      if (segBox) segBox.classList.remove("is-scanning");
     }
   }
 

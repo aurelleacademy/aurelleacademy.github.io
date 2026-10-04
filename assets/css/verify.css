@@ -4,7 +4,9 @@
 .verify {
   padding-block: clamp(3.5rem, 8vw, 6rem);
   background:
-    radial-gradient(ellipse 60% 45% at 50% -5%, oklch(0.93 0.04 85 / 0.7), transparent 65%),
+    radial-gradient(ellipse 70% 50% at 50% -5%, oklch(0.92 0.06 85 / 0.8), transparent 70%),
+    radial-gradient(circle at 12% 35%, oklch(0.94 0.04 85 / 0.55), transparent 45%),
+    radial-gradient(circle at 88% 60%, oklch(0.93 0.05 78 / 0.45), transparent 50%),
     var(--bg-0);
   min-height: calc(100dvh - 12rem);
 }
@@ -288,45 +290,84 @@
 }
 
 .btn[disabled] {
-  opacity: 0.65;
-  cursor: progress;
-  transform: none;
-  box-shadow: none;
+  opacity: 0.85;
+  cursor: wait;
+}
+
+/* Animated Button & Scanning States */
+.btn--loading {
+  background: linear-gradient(90deg, var(--gold-strong), var(--gold), var(--gold-strong)) !important;
+  background-size: 200% 100% !important;
+  animation: shimmerGold 1.5s infinite linear !important;
+  cursor: wait !important;
+}
+
+.btn__spinner {
+  width: 1.15rem;
+  height: 1.15rem;
+  animation: spinRotate 0.8s infinite linear;
+  flex: none;
+}
+
+@keyframes spinRotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmerGold {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.segmented-control.is-scanning {
+  border-color: var(--gold-strong);
+  box-shadow: 0 0 25px var(--gold-glow), 0 0 0 2px var(--gold);
+  animation: scanGlow 1s infinite alternate ease-in-out;
+}
+
+@keyframes scanGlow {
+  from { box-shadow: 0 0 10px var(--gold-glow); }
+  to { box-shadow: 0 0 32px oklch(0.72 0.14 80 / 0.55); }
 }
 
 /* ---------- Result Card ---------- */
 .result {
-  margin-top: 1.75rem;
+  margin-top: 2.75rem;
   text-align: left;
-  animation: result-in 0.4s var(--ease) both;
-}
-
-@keyframes result-in {
-  from {
-    opacity: 0;
-    transform: translateY(0.85rem);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+  scroll-margin-top: 5rem;
 }
 
 .result article.card {
-  background: #ffffff;
-  border: 1.5px solid var(--line);
-  box-shadow: 0 35px 70px -20px oklch(0.2 0.02 60 / 0.14), 0 0 0 1px #ffffff;
+  background: linear-gradient(180deg, #ffffff 0%, var(--bg-1) 100%);
+  border: 1.5px solid oklch(0.78 0.10 82);
+  box-shadow:
+    0 35px 85px -20px oklch(0.65 0.15 80 / 0.28),
+    0 0 0 1px oklch(0.85 0.05 85),
+    0 12px 30px -5px oklch(0.2 0.02 60 / 0.09);
   border-radius: var(--radius-l);
-  padding: clamp(2rem, 5vw, 3.25rem);
+  padding: clamp(2rem, 5vw, 3.5rem);
   position: relative;
   overflow: hidden;
+  animation: resultEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes resultEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
 }
 
 .result article.card::before {
   content: "";
   position: absolute;
-  inset: 8px;
-  border: 1px dashed oklch(0.72 0.14 80 / 0.35);
+  inset: 10px;
+  border: 1.5px dashed oklch(0.72 0.14 80 / 0.4);
   border-radius: calc(var(--radius-l) - 6px);
   pointer-events: none;
 }
