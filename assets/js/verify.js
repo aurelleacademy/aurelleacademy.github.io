@@ -207,17 +207,10 @@
       </div>
     `;
 
-    // 6. Action Toolbar (Print / PDF & Direct Link Copy)
+    // 6. Action Toolbar (Direct Link Share)
     const actions = el("div", "result__actions");
-    const printBtn = el("button", "btn btn--gold result__print-btn");
-    printBtn.type = "button";
-    printBtn.innerHTML = `
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-      Print Official Statement / Save PDF
-    `;
-    printBtn.addEventListener("click", () => window.print());
 
-    const copyBtn = el("button", "btn btn--ghost result__copy-btn");
+    const copyBtn = el("button", "btn btn--gold result__copy-btn");
     copyBtn.type = "button";
     copyBtn.innerHTML = `
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
@@ -261,7 +254,7 @@
       }
     });
 
-    actions.append(printBtn, copyBtn);
+    actions.append(copyBtn);
 
     card.append(header, statusWrap, candidateSection, grid, footerMeta, actions);
     result.replaceChildren(card);
