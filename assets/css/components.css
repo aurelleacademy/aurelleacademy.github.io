@@ -26,6 +26,7 @@
   align-items: center;
   gap: 0.85rem;
   text-decoration: none;
+  flex: none;
 }
 
 .wordmark__mark {
@@ -60,8 +61,17 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: clamp(0.75rem, 1.8vw, 1.85rem);
+  justify-content: center;
+  gap: clamp(0.85rem, 2vw, 2rem);
+  flex: 1;
   flex-wrap: nowrap;
+}
+
+.site-header__action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: none;
 }
 
 .nav a {
@@ -80,9 +90,9 @@
   color: var(--gold-strong);
 }
 
-@media (max-width: 64rem) {
+@media (max-width: 66rem) {
   .nav {
-    gap: clamp(0.55rem, 1.2vw, 1rem);
+    gap: clamp(0.55rem, 1.2vw, 1.1rem);
   }
   .nav a {
     font-size: 0.76rem;
@@ -90,8 +100,8 @@
   }
 }
 
-@media (max-width: 48rem) {
-  .nav a:not(.btn):not(.nav-verify-btn) {
+@media (max-width: 50rem) {
+  .nav {
     display: none;
   }
 }
