@@ -157,15 +157,21 @@
     statusWrap.append(status);
 
     // 3. Candidate & Qualification Section
+    const isMaster =
+      (id && id.includes("MSTR")) ||
+      (record.type && String(record.type).toLowerCase() === "master") ||
+      (record.status && String(record.status).toLowerCase().includes("master")) ||
+      (record.course && String(record.course).toLowerCase().includes("master"));
+
     const candidateSection = el("div", "result__candidate-section");
-    const certEyebrow = el("span", "result__eyebrow", "CERTIFIED GRADUATE HOLDER");
+    const certEyebrow = el("span", "result__eyebrow", isMaster ? "CERTIFIED MASTER EDUCATOR & PRACTITIONER" : "CERTIFIED GRADUATE HOLDER");
     const name = el("h2", "result__name");
     const bdi = document.createElement("bdi");
     bdi.textContent = record.name;
     name.append(bdi);
 
     const courseWrap = el("div", "result__course-wrap");
-    const courseEyebrow = el("span", "result__course-label", "ACCREDITED VOCATIONAL DISCIPLINE");
+    const courseEyebrow = el("span", "result__course-label", isMaster ? "MASTER DISCIPLINE & PEDAGOGICAL ACCREDITATION" : "ACCREDITED VOCATIONAL DISCIPLINE");
     const course = el("p", "result__course", record.course);
     courseWrap.append(courseEyebrow, course);
 
@@ -181,10 +187,10 @@
     grid.append(
       field("Credential Identifier", id),
       field("Date of Examination", record.date),
-      field("Qualification Standard", "Private Vocational Framework (Level IV)"),
-      field("Clinical Lab Modules", "Standard Supervised Clinical CEUs"),
+      field("Qualification Standard", isMaster ? "International Master Framework (Level V - Master Level)" : "Private Vocational Framework (Level IV)"),
+      field("Clinical Lab Modules", isMaster ? "Advanced Pedagogical & Master Clinical CEUs" : "Standard Supervised Clinical CEUs"),
       field("Ledger Security Protocol", "PBKDF2-200K / AES-256-GCM Verified"),
-      field("Issuing Authority", "Aurelle Academy Assessment Jury")
+      field("Issuing Authority", isMaster ? "Aurelle Academy International Examination Board" : "Aurelle Academy Assessment Jury")
     );
 
     // 5. Official Signature & Stamp Seals (Printable)
@@ -192,7 +198,7 @@
     footerMeta.innerHTML = `
       <div class="result__signature-col">
         <span class="result__sig-script">H. V. Laurent</span>
-        <span class="result__sig-title">Director of Academic Studies</span>
+        <span class="result__sig-title">${isMaster ? "Head of International Faculty" : "Director of Academic Studies"}</span>
       </div>
       <div class="result__seal-col">
         <div class="result__stamp-seal">
@@ -202,8 +208,8 @@
         </div>
       </div>
       <div class="result__signature-col">
-        <span class="result__sig-script">M. S. D'Aurelle</span>
-        <span class="result__sig-title">Assessment Jury Chairperson</span>
+        <span class="result__sig-script">E. Aurelle</span>
+        <span class="result__sig-title">${isMaster ? "Academy President & Founder" : "Academy President"}</span>
       </div>
     `;
 
